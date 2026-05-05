@@ -1,5 +1,5 @@
 import React from "react";
-import {createBrowserRouter, RouterProvider} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Layout from "./components/Layout";
 import Dashboard from "./pages/Dashboard";
 import Organization from "./pages/Organization";
@@ -8,7 +8,8 @@ import Products from "./pages/Products";
 import ComplianceEngine from "./pages/ComplianceEngine";
 import Reports from "./pages/Reports";
 import Register from "./pages/Register";
-
+import { AuthProvider } from "./context/AuthContext";
+import ProtectedRoute from "./components/ProtectedRoute.jsx";
 const App = () => {
   const router = createBrowserRouter([
     {
@@ -46,7 +47,13 @@ const App = () => {
       ],
     },
   ]);
-  return <RouterProvider router={router}></RouterProvider>;
+  return (
+    <>
+      <AuthProvider>
+        <RouterProvider router={router} />
+      </AuthProvider>
+    </>
+  );
 };
 
 export default App;

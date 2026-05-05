@@ -8,6 +8,15 @@ import CategoryIcon from "@mui/icons-material/Category";
 import AssuredWorkloadIcon from "@mui/icons-material/AssuredWorkload";
 import ReportIcon from "@mui/icons-material/Report";
 import LoginIcon from "@mui/icons-material/Login";
+import { createTheme } from "@mui/material/styles";
+
+
+
+const theme = createTheme({
+  palette: {
+    mode: "dark", // force mode
+  },
+});
 
 const NAVIGATION = [
   {
@@ -47,7 +56,7 @@ const NAVIGATION = [
     segment: "register",
     title: "Register",
     icon: <LoginIcon />,
-  },
+  }
 ];
 
 function Layout() {
@@ -62,6 +71,7 @@ function Layout() {
     <AppProvider
       navigation={NAVIGATION}
       router={router}
+      theme={theme}
       branding={{title: "Compliance analysis", logo: <></>}}
     >
       <DashboardLayout>
